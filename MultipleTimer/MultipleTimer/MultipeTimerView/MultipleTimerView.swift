@@ -14,35 +14,30 @@ struct MultipleTimerView: View {
     
     var body: some View {
         VStack {
-            ScrollView(.horizontal) {
-                HStack {
-                    TabView(selection: $currentIndex) {
-                        ForEach(0..<viewModel.timerItemStore.count, id: \.self) { index in
-                            VStack{
-                                HStack {
-                                    Text("ID: \(viewModel.timerItemStore[index].id)")
-                                        .lineLimit(2)
-                                        .font(.footnote)
-                                        .fontWeight(.semibold)
-                                    
-                                    Spacer()
-                                }
-                                Spacer()
-                                
-                                Text("Count: \(viewModel.timerItemStore[index].count)")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                                
-                                Spacer()
-                            }
-                            .padding()
-                            .foregroundColor(.white)
+            TabView(selection: $currentIndex) {
+                ForEach(0..<viewModel.timerItemStore.count, id: \.self) { index in
+                    VStack{
+                        HStack {
+                            Text("ID: \(viewModel.timerItemStore[index].id)")
+                                .lineLimit(2)
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                            
+                            Spacer()
                         }
+                        Spacer()
+                        
+                        Text("Count: \(viewModel.timerItemStore[index].count)")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                        
+                        Spacer()
                     }
-                    .tabViewStyle(.page)
+                    .padding()
+                    .foregroundColor(.white)
                 }
-                .frame(width: 300, height: 200)
             }
+            .tabViewStyle(.page)
             .background(.pink)
             .cornerRadius(20)
             .shadow(color: .gray, radius: 15)
