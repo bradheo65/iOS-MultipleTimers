@@ -33,6 +33,7 @@ final class MultipeTimerViewModel: ObservableObject {
         guard timerItemStore.isEmpty == false else {
             return
         }
+        timerItemStore[index].subscriptions?.cancel()
         timerItemStore.remove(at: index)
     }
 }
